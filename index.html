@@ -1,276 +1,1283 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人简历 - 秦海江</title>
+    <title data-zh="秦海江 - 教育与心理统计学研究" data-en="Haijiang Qin - Research in Educational & Psychological Statistics">秦海江 - 教育与心理统计学研究</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 全局样式：简洁专业，适合简历 */
+        :root {
+            --primary-color: #1a3a6c;    /* 深蓝色 - 学术专业感 */
+            --secondary-color: #2c5f2d;  /* 深绿色 - 心理学/教育关联 */
+            --accent-color: #8e44ad;     /* 紫色 - 数据科学/AI元素 */
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
             padding: 20px;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            background-image: linear-gradient(rgba(250, 250, 250, 0.9), rgba(250, 250, 250, 0.9)), 
+                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e9ecef" stroke-width="0.5"/></svg>');
+            background-size: 40px 40px;
         }
+        
         header {
             text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            padding: 50px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .lang-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2ecc71;
+            margin-left: 8px;
+        }
+        
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            margin: 0 auto 20px;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 25px;
             display: block;
-            background-color: #e0e0e0;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
         }
+        
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
         }
+        
         .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.4rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-weight: 300;
+            position: relative;
+            z-index: 2;
         }
+        
+        .academic-title {
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 30px;
+            margin-top: 10px;
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
         section {
             background: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
+        
         section:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
+        
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+        
+        .research-section::before {
+            background: var(--secondary-color);
+        }
+        
+        .software-section::before {
+            background: var(--accent-color);
+        }
+        
+        .publications-section::before {
+            background: #e67e22;
+        }
+        
+        .projects-section::before {
+            background: #3498db;
+        }
+        
         h2 {
-            color: #1a2a6c;
-            border-bottom: 2px solid #1a2a6c;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        .resume-item {
+            color: var(--primary-color);
+            padding-bottom: 12px;
             margin-bottom: 25px;
-        }
-        .resume-item h3 {
-            color: #b21f1f;
-            font-size: 1.4rem;
-        }
-        .date {
-            color: #666;
-            font-style: italic;
-            margin: 5px 0;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        .skills-container {
+            font-size: 1.9rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            align-items: center;
+            gap: 12px;
         }
-        .skill-tag {
-            background: #e9ecef;
-            color: #495057;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        
+        h2 i {
+            color: var(--secondary-color);
         }
-        .btn {
-            display: inline-block;
-            background: #1a2a6c;
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-            border: none;
-            font-size: 1rem;
+        
+        .research-section h2 i {
+            color: var(--secondary-color);
         }
-        .btn:hover {
-            background: #0d1a4d;
+        
+        .software-section h2 i {
+            color: var(--accent-color);
         }
-        .btn-download {
-            background: #b21f1f;
+        
+        .publications-section h2 i {
+            color: #e67e22;
         }
-        .btn-download:hover {
-            background: #8a1717;
+        
+        .projects-section h2 i {
+            color: #3498db;
         }
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
-        .contact-item {
+        
+        .research-area {
+            padding: 20px;
+            border-radius: 10px;
+            background: var(--light-bg);
+            border-left: 3px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .research-area:hover {
+            transform: translateX(5px);
+            background: #eef7ff;
+        }
+        
+        .research-area h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        
+        .software-card {
+            border: 1px solid #e0e6ef;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .software-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.2);
+        }
+        
+        .software-img {
+            height: 160px;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+        
+        .software-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .software-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .software-links {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        /* APA 7th 格式样式 */
+        .paper-item {
+            padding: 18px;
+            border-bottom: 1px dashed #ddd;
+            line-height: 1.8;
+            display: none;
+        }
+        
+        .paper-item.visible {
+            display: block;
+        }
+        
+        .paper-item:first-child,
+        .paper-item:nth-child(2),
+        .paper-item:nth-child(3) {
+            display: block;
+        }
+        
+        .paper-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-style: normal;
+        }
+        
+        .paper-authors {
+            font-style: normal;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #444;
+        }
+        
+        .paper-journal {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin: 5px 0;
+        }
+        
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .paper-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+            margin-right: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .paper-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .doi-link {
+            color: #1a0dab;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .profile-card {
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .contact-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary-color);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            background: var(--light-bg);
+            color: var(--primary-color);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 22px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #0d2a59;
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background: var(--accent-color);
+        }
+        
+        .btn-accent:hover {
+            background: #7d3c98;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             color: #666;
-            font-size: 0.9rem;
-            margin-top: 30px;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
         }
-        /* 响应式调整 */
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        
+        .research-highlight {
+            background: linear-gradient(135deg, rgba(44, 95, 45, 0.08), rgba(44, 95, 45, 0.03));
+            border-radius: 10px;
+            padding: 30px;
+            margin: 25px 0;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .highlight-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* APA 格式特定样式 */
+        .apa-chinese {
+            display: block;
+        }
+        
+        .apa-english {
+            display: none;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        /* 项目卡片样式 */
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 3px solid #3498db;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        
+        .project-title {
+            font-weight: 600;
+            color: #2980b9;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .project-meta {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .project-description {
+            margin-top: 12px;
+            line-height: 1.7;
+        }
+        
+        .contrib-details {
+            font-style: italic;
+            color: #555;
+            margin: 8px 0;
+            padding-left: 10px;
+            border-left: 2px solid #ddd;
+        }
+        
+        /* 软件卡片样式 */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
+        }
+        
+        .software-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            transition: var(--transition);
+            display: none; /* 默认隐藏 */
+        }
+        
+        .software-item.visible {
+            display: block; /* 可见时显示 */
+        }
+        
+        .software-item:nth-child(1),
+        .software-item:nth-child(2) {
+            display: block; /* 默认显示前2个 */
+        }
+        
+        .software-name {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .software-meta {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 5px 0;
+        }
+        
+        .software-description {
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+        
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .badge {
+            background: rgba(142, 68, 173, 0.1);
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding: 15px;
             }
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
             }
             section {
-                padding: 20px 15px;
+                padding: 20px;
+            }
+            .container {
+                gap: 20px;
+            }
+            .lang-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 15px;
+                align-self: flex-end;
             }
         }
-        /* 隐藏内容初始状态 */
-        #more-experience {
+        
+        .view-all-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .hidden {
             display: none;
+        }
+        
+        /* 自定义样式 - 按钮容器 */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://bailian-bmp-pre.oss-cn-hangzhou.aliyuncs.com/public/system_agent/PlaceHolder.png" alt="个人头像" class="profile-img">
-        <h1>秦海江</h1>
-        <p class="tagline">全栈开发工程师 | 5年Web开发经验 | 专注用户体验与高效代码</p>
+        <button class="lang-toggle" id="langToggle">
+            <i class="fas fa-language"></i> <span data-zh="中文" data-en="English">中文</span>
+            <span class="lang-indicator"></span>
+        </button>
+        <img src="assets/PlaceHolder.jpg" alt="秦海江博士" class="profile-img">
+        <h1 data-zh="秦海江" data-en="Haijiang Qin">秦海江</h1>
+        <p class="tagline" data-zh="教育与心理统计 | 数据科学与人工智能" data-en="Educational & Psychological Statistics | Data Science & AI">教育与心理统计 | 数据科学与人工智能</p>
+        <div class="academic-title" data-zh="西南大学 · 心理学部" data-en="Faculty of Psychology, Southwest University">西南大学 · 心理学部</div>
     </header>
 
-    <section>
-        <h2>关于我</h2>
-        <p>资深软件工程师，擅长前端框架（React/Vue）和后端技术（Node.js/Python）。热爱开源项目，注重代码质量和可维护性。曾主导多个高流量Web应用开发，追求技术与设计的完美结合。</p>
-    </section>
+    <div class="container">
+        <main>
+            <section class="research-section">
+                <h2><i class="fas fa-user-graduate"></i> <span data-zh="关于我" data-en="About Me">关于我</span></h2>
+                <p data-zh="我是一名专注于<strong>教育与心理统计学</strong>的研究者，致力于将先进的数据分析方法、心理测量学理论和人工智能技术应用于教育评估与心理测量领域。持续深耕于项目反应理论(IRT)、认知诊断模型(CDMs)、人工智能在教育与心理测量中的统计建模、应用等方向。" 
+                   data-en="I am a researcher specializing in <strong>educational and psychological statistics</strong>, dedicated to applying advanced data analysis methods, psychometric theories, and artificial intelligence technologies to educational assessment and psychological measurement. My research focuses on Item Response Theory (IRT), Cognitive Diagnosis Models (CDMs), and statistical modeling of AI applications in educational and psychological measurement.">
+                    我是一名专注于<strong>教育与心理统计学</strong>的研究者，致力于将先进的数据分析方法、心理测量学理论和人工智能技术应用于教育评估与心理测量领域。持续深耕于项目反应理论(IRT)、认知诊断模型(CDMs)、人工智能在教育与心理测量中的统计建模、应用等方向。
+                </p>
+                
+                <div class="research-highlight">
+                    <div class="highlight-title">
+                        <i class="fas fa-brain"></i>
+                        <h3 data-zh="当前研究焦点" data-en="Current Research Focus">当前研究焦点</h3>
+                    </div>
+                    <p data-zh="开发自适应心理测量工具，结合深度学习优化认知诊断模型，在保持测量精度的同时提升评估效率。近期在应用贝叶斯方法解决小样本心理测量问题方面取得突破性进展。" 
+                       data-en="Developing adaptive psychometric tools that integrate deep learning to optimize cognitive diagnosis models, enhancing assessment efficiency while maintaining measurement accuracy. Recent breakthroughs in applying Bayesian methods to address small-sample challenges in psychological measurement.">
+                        开发自适应心理测量工具，结合深度学习优化认知诊断模型，在保持测量精度的同时提升评估效率。近期在应用贝叶斯方法解决小样本心理测量问题方面取得突破性进展。
+                    </p>
+                </div>
+            </section>
+            
+            <section class="software-section">
+                <h2><i class="fas fa-code"></i> <span data-zh="软件开发" data-en="Software Development">软件开发</span></h2>
+                <div class="software-grid" id="softwareContainer">
+                    <!-- Software items will be dynamically inserted here -->
+                </div>
+                
+                <div class="button-container">
+                    <button id="viewAllSoftwareBtn" class="btn btn-accent view-all-btn">
+                        <i class="fas fa-list"></i> <span data-zh="查看全部" data-en="View All Software">查看全部</span>
+                    </button>
+                    <button id="showLessSoftwareBtn" class="btn btn-accent view-all-btn hidden">
+                        <i class="fas fa-chevron-up"></i> <span data-zh="收起" data-en="Show Less">收起</span>
+                    </button>
+                </div>
+            </section>
 
-    <section>
-        <h2>教育背景</h2>
-        <div class="resume-item">
-            <h3>浙江大学 - 计算机科学与技术</h3>
-            <p class="date">2015年9月 - 2019年6月 | 学士学位</p>
-            <ul>
-                <li>主修课程：数据结构、算法设计、Web开发、数据库系统</li>
-                <li>荣誉：校级优秀毕业生，ACM程序设计竞赛省级二等奖</li>
-            </ul>
-        </div>
-    </section>
+            <section class="publications-section">
+                <h2><i class="fas fa-book-open"></i> <span data-zh="代表性论文" data-en="Selected Publications">代表性论文</span></h2>
+                
+                <div id="publicationsContainer">
+                    <!-- Publications will be dynamically inserted here -->
+                </div>
+                
+                <div class="button-container">
+                    <button id="viewAllBtn" class="btn btn-accent view-all-btn">
+                        <i class="fas fa-list"></i> <span data-zh="查看全部" data-en="View All Publications">查看全部</span>
+                    </button>
+                    <button id="showLessBtn" class="btn btn-accent view-all-btn hidden">
+                        <i class="fas fa-chevron-up"></i> <span data-zh="收起" data-en="Show Less">收起</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+        
+        <aside>
+            <div class="profile-card">
+                <h3 data-zh="联系方式" data-en="Contact">联系方式</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div data-zh="邮箱" data-en="Email">邮箱</div>
+                            <a href="mailto:Haijiang133@outlook.com" style="color: var(--primary-color); text-decoration: none;">Haijiang133@outlook.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <div data-zh="地址" data-en="Address">地址</div>
+                            <span data-zh="中国·重庆 · 西南大学心理学部" data-en="Faculty of Psychology, Southwest University, Chongqing, China">中国·重庆 · 西南大学心理学部</span>
+                        </div>
+                    </div>
 
-    <section>
-        <h2>工作经验</h2>
-        <div class="resume-item">
-            <h3>高级前端工程师 - 阿里巴巴集团</h3>
-            <p class="date">2021年3月 - 至今</p>
-            <ul>
-                <li>负责核心电商平台前端架构，日均处理1000万+用户请求</li>
-                <li>主导React微前端项目，提升团队开发效率40%</li>
-                <li>优化首屏加载时间至1.2秒内，用户体验评分提升25%</li>
-            </ul>
-        </div>
-        <div class="resume-item" id="more-experience">
-            <h3>前端开发工程师 - 腾讯科技</h3>
-            <p class="date">2019年7月 - 2021年2月</p>
-            <ul>
-                <li>开发微信小程序生态工具链，支持500+企业客户</li>
-                <li>实现自动化测试框架，减少回归测试时间60%</li>
-                <li>参与开源项目TDesign，贡献3000+行代码</li>
-            </ul>
-        </div>
-        <button id="toggleExperience" class="btn">显示更多工作经历</button>
-    </section>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-orcid"></i>
+                        </div>
+                        <div>
+                            <div data-zh="ORCID" data-en="ORCID">ORCID</div>
+                            <a href="https://orcid.org/0009-0000-6721-5653" target="_blank" style="color: var(--primary-color); text-decoration: none;">0009-0000-6721-5653</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <div data-zh="GitHub" data-en="GitHub">GitHub</div>
+                            <a href="https://github.com/HaijiangQ" target="_blank" style="color: var(--primary-color); text-decoration: none;">@ Haijiang Qin</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <h3 style="margin: 25px 0 15px 0;" data-zh="研究方向" data-en="Research Focus">研究方向</h3>
+                <div class="skills-container">
+                    <span class="skill-tag">R (Qval, EFAfactors, LCPA)</span>
+                    <span class="skill-tag">项目反应理论</span>
+                    <span class="skill-tag">认知诊断模型</span>
+                    <span class="skill-tag">人工智能</span>
+                    <span class="skill-tag">心理测量学</span>
+                    <span class="skill-tag">贝叶斯方法</span>
+                </div>
+            </div>
 
-    <section>
-        <h2>技能</h2>
-        <div class="skills-container">
-            <span class="skill-tag">JavaScript/TypeScript</span>
-            <span class="skill-tag">React/Vue</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">HTML5/CSS3</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">AWS</span>
-        </div>
-    </section>
-
-    <section>
-        <h2>联系方式</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <span>📧</span>
-                <a href="mailto:contact@haijiangqin.com" style="color: #1a2a6c;">contact@haijiangqin.com</a>
+            <div class="stat-card">
+                <h3 data-zh="研究统计" data-en="Research Stats">研究统计</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 15px;">
+                    <div>
+                        <div class="stat-number" id="journalPapersCount">0</div>
+                        <div data-zh="期刊论文" data-en="Journal Papers">期刊论文</div>
+                    </div>
+                    <div>
+                        <div class="stat-number" id="openSourcePackagesCount">0</div>
+                        <div data-zh="开源软件包" data-en="Open Source Packages">开源软件包</div>
+                    </div>
+                    <div>
+                        <div class="stat-number" id="casQ1PapersCount">0</div>
+                        <div data-zh="中科院一区论文" data-en="CAS Q1 Papers">中科院一区论文</div>
+                    </div>
+                </div>
             </div>
-            <div class="contact-item">
-                <span>📱</span>
-                <span>+86 138 0013 8000</span>
-            </div>
-            <div class="contact-item">
-                <span>🔗</span>
-                <a href="https://github.com/haijiangqin" target="_blank" style="color: #1a2a6c;">GitHub</a>
-            </div>
-            <div class="contact-item">
-                <span>📍</span>
-                <span>中国·杭州</span>
-            </div>
-        </div>
-        <a href="resume.pdf" class="btn btn-download" id="downloadResume">下载PDF简历</a>
-        <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">（点击下载后，替换为您的实际PDF文件）</p>
-    </section>
+        </aside>
+    </div>
 
     <footer>
-        <p>© 2023 秦海江的个人网站 | 域名: haijiangqin.com | GitHub Pages 部署</p>
-        <p>设计简洁高效，适配所有设备</p>
+        <p data-zh="© 2026 秦海江 | 西南大学心理学部" data-en="© 2026 Haijiang Qin | Faculty of Psychology, Southwest University">© 2026 秦海江 | 西南大学心理学部</p>
     </footer>
 
     <script>
-        // 事件绑定：使用 addEventListener 实现交互
         document.addEventListener('DOMContentLoaded', function() {
-            // 工作经历切换按钮
-            const toggleBtn = document.getElementById('toggleExperience');
-            const moreExperience = document.getElementById('more-experience');
-            
-            toggleBtn.addEventListener('click', function() {
-                if (moreExperience.style.display === 'none' || !moreExperience.style.display) {
-                    moreExperience.style.display = 'block';
-                    toggleBtn.textContent = '隐藏额外工作经历';
-                } else {
-                    moreExperience.style.display = 'none';
-                    toggleBtn.textContent = '显示更多工作经历';
+            // 数据模型
+            const softwareData = [
+                {
+                    name: "Qval",
+                    authors: "Qin, H., & Guo, L.",
+                    year: "2025",
+                    version: "1.2.4",
+                    description: {
+                        zh: "开源 R 软件包，实现Q矩阵验证方法框架。",
+                        en: "Open-source R package implementing a framework for Q-matrix validation methods."
+                    },
+                    link: "https://CRAN.R-project.org/package=Qval",
+                    type: "Open-source R package"
+                },
+                {
+                    name: "EFAfactors",
+                    authors: "Qin, H., & Guo, L.",
+                    year: "2025",
+                    version: "1.2.4",
+                    description: {
+                        zh: "开源 R 软件包，用于探索性因子分析中确定因子数量。",
+                        en: "Open-source R package for determining the number of factors in exploratory factor analysis."
+                    },
+                    link: "https://CRAN.R-project.org/package=EFAfactors",
+                    type: "Open-source R package"
+                },
+                {
+                    name: "LCPA",
+                    authors: "Qin, H., & Guo, L.",
+                    year: "2026",
+                    version: "1.0.0",
+                    description: {
+                        zh: "开源 R 软件包，提供潜类别与潜剖面分析的通用框架。",
+                        en: "Open-source R package providing a general framework for Latent Class and Profile Analysis."
+                    },
+                    link: "https://CRAN.R-project.org/package=LCPA",
+                    type: "Open-source R package"
+                },
+                {
+                    name: "LSTMfactors",
+                    authors: "Qin, H., & Guo, L.",
+                    year: "2025",
+                    version: "1.0.0",
+                    description: {
+                        zh: "开源 R 软件包，利用LSTM进行探索性因素分析中的确定因子数量。",
+                        en: "Open-source R package utilizing LSTM for determining the number of factors in exploratory factor analysis."
+                    },
+                    link: "https://CRAN.R-project.org/package=LSTMfactors",
+                    type: "Open-source R package"
                 }
+            ];
+
+            const publicationsData = [
+                {
+                    title: {
+                        zh: "基于长短期记忆网络的探索性因素分析因子保留方法",
+                        en: "Exploratory factor retention method based on long short-term memory networks"
+                    },
+                    authors: {
+                        zh: "郭磊, 秦海江",
+                        en: "Guo, L., & Qin, H. J."
+                    },
+                    journal: {
+                        zh: "心理学报",
+                        en: "Acta Psychologica Sinica"
+                    },
+                    year: "2026",
+                    volume: "57",
+                    issue: "3",
+                    pages: "1-11",
+                    doi: "10.3724/SP.J.1041.2026.0558",
+                    contrib: {
+                        zh: "(心理学中文旗舰, 该论文以LSTM提高了探索性因子分析保留因子的准确性)",
+                        en: "(Flagship journal in Chinese psychology. This paper improves the accuracy of factor retention in exploratory factor analysis using LSTM)"
+                    }
+                },
+                {
+                    title: {
+                        zh: "Priority attribute algorithm for Q-matrix validation: A didactic",
+                        en: "Priority attribute algorithm for Q-matrix validation: A didactic"
+                    },
+                    authors: {
+                        zh: "Qin, H., & Guo, L.",
+                        en: "Qin, H., & Guo, L."
+                    },
+                    journal: {
+                        zh: "Behavior Research Methods",
+                        en: "Behavior Research Methods"
+                    },
+                    year: "2025",
+                    volume: "57",
+                    issue: "1",
+                    pages: "31",
+                    doi: "10.3758/s13428-024-02547-5",
+                    contrib: {
+                        zh: "(中科院一区，SSCI, 该论文提出属性优先算法大幅降低认知诊断领域修正Q矩阵的搜索复杂度，由O(2^K)降至O(K))",
+                        en: "(CAS Q1, SSCI. This paper proposes the Priority Attribute Algorithm that significantly reduces the search complexity for Q-matrix validation in cognitive diagnosis from O(2^K) to O(K))"
+                    }
+                },
+                {
+                    title: {
+                        zh: "基于信号检测论的认知诊断评估：构建与应用",
+                        en: "Cognitive diagnosis assessment based on signal detection theory: Construction and application"
+                    },
+                    authors: {
+                        zh: "郭磊, 秦海江",
+                        en: "Guo, L., & Qin, H. J."
+                    },
+                    journal: {
+                        zh: "心理学报",
+                        en: "Acta Psychologica Sinica"
+                    },
+                    year: "2024",
+                    volume: "56",
+                    issue: "3",
+                    pages: "339-351",
+                    doi: "10.3724/SP.J.1041.2024.00339", 
+                    contrib: {
+                        zh: "(心理学中文旗舰, 该论文将信号检测论与认知诊断结合，提出适合选择题测验数据的认知诊断模型)",
+                        en: "(Flagship journal in Chinese psychology. This paper integrates signal detection theory with cognitive diagnosis to propose a model suitable for multiple-choice test data)"
+                    }
+                },
+                {
+                    title: {
+                        zh: "Using machine learning to improve Q-matrix validation",
+                        en: "Using machine learning to improve Q-matrix validation"
+                    },
+                    authors: {
+                        zh: "Qin, H., & Guo, L.",
+                        en: "Qin, H., & Guo, L."
+                    },
+                    journal: {
+                        zh: "Behavior Research Methods",
+                        en: "Behavior Research Methods"
+                    },
+                    year: "2024",
+                    volume: "56",
+                    issue: "3",
+                    pages: "1916-1935",
+                    doi: "10.3758/s13428-023-02126-0",
+                    contrib: {
+                        zh: "(中科院一区，SSCI，该论文利用随机森林、多层感知器等提高了认知诊断领域Q矩阵修正的准确性)",
+                        en: "(CAS Q1, SSCI. This paper leverages random forests and multilayer perceptrons to improve the accuracy of Q-matrix validation in cognitive diagnosis)"
+                    }
+                },
+                {
+                    title: {
+                        zh: "高中平面向量的认知诊断研究",
+                        en: "An Empirical Research of Cognitive Diagnosis for Two-Dimensional Vector in High School"
+                    },
+                    authors: {
+                        zh: "秦海江, 霍学晨, & 郭磊",
+                        en: "Qin, H. J., Huo, X. C., & Guo, L."
+                    },
+                    journal: {
+                        zh: "数学教育学报",
+                        en: "Journal of Mathematics Education"
+                    },
+                    year: "2024",
+                    volume: "33",
+                    issue: "02",
+                    pages: "1-7",
+                    url: "https://www.cnki.net/",
+                    contrib: {
+                        zh: "(数学教育旗舰，该论文进行认知诊断实证数据，对如何在教育测验中进行认知诊断以促进教育实效进行了讨论)",
+                        en: "(Flagship journal in mathematics education. This paper presents empirical data on cognitive diagnosis and discusses how to implement cognitive diagnosis in educational testing to enhance educational effectiveness)"
+                    }
+                },
+                {
+                    title: {
+                        zh: "基于随机森林的认知诊断Q矩阵修正",
+                        en: "New Methods for Q-matrix Validation Based on Random Forest"
+                    },
+                    authors: {
+                        zh: "秦海江, 郭磊",
+                        en: "Qin, H., & Guo, L."
+                    },
+                    journal: {
+                        zh: "心理技术与应用",
+                        en: "Psychology：Techniques and Applications"
+                    },
+                    year: "2024",
+                    volume: "11",
+                    issue: "11",
+                    pages: "685-704",
+                    url: "https://www.cnki.net/",
+                    contrib: {
+                        zh: "(该论文使用R^2和似然对随机森林进行训练，提高了Q矩阵修正的准确率)",
+                        en: "(This paper uses R^2 and likelihood to train random forests, improving the accuracy of Q-matrix validation)"
+                    }
+                }
+            ];
+
+            // 语言切换功能
+            const langToggle = document.getElementById('langToggle');
+            const langIndicator = langToggle.querySelector('.lang-indicator');
+            let currentLang = localStorage.getItem('preferredLang') || 'zh';
+            
+            // 初始化语言
+            setLanguage(currentLang);
+            
+            // 监听语言切换
+            langToggle.addEventListener('click', function() {
+                currentLang = currentLang === 'zh' ? 'en' : 'zh';
+                setLanguage(currentLang);
+                localStorage.setItem('preferredLang', currentLang);
+            });
+            
+            // 设置语言
+            function setLanguage(lang) {
+                // 更新语言切换按钮
+                if (lang === 'zh') {
+                    langToggle.querySelector('span').textContent = '中文';
+                    langIndicator.style.background = '#2ecc71';
+                } else {
+                    langToggle.querySelector('span').textContent = 'English';
+                    langIndicator.style.background = '#3498db';
+                }
+                
+                // 切换论文显示
+                document.querySelectorAll('.apa-chinese').forEach(el => el.style.display = lang === 'zh' ? 'block' : 'none');
+                document.querySelectorAll('.apa-english').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+                
+                // 更新所有可翻译元素
+                document.querySelectorAll('[data-zh]').forEach(el => {
+                    if (lang === 'zh' && el.hasAttribute('data-zh')) {
+                        if (el.tagName === 'TITLE') {
+                            document.title = el.getAttribute('data-zh');
+                        } else {
+                            el.textContent = el.getAttribute('data-zh');
+                        }
+                    } else if (lang === 'en' && el.hasAttribute('data-en')) {
+                        if (el.tagName === 'TITLE') {
+                            document.title = el.getAttribute('data-en');
+                        } else {
+                            el.textContent = el.getAttribute('data-en');
+                        }
+                    }
+                });
+                
+                // 重新渲染软件和出版物
+                renderSoftware();
+                renderPublications();
+                
+                // 特殊处理APA英文格式
+                document.querySelectorAll('.apa-english').forEach(el => {
+                    if (lang === 'en') {
+                        el.style.fontFamily = "'Times New Roman', Times, serif";
+                    } else {
+                        el.style.fontFamily = "inherit";
+                    }
+                });
+                
+                // 特殊处理贡献详情的样式
+                document.querySelectorAll('.contrib-details').forEach(el => {
+                    if (lang === 'en') {
+                        el.style.fontStyle = 'italic';
+                        el.style.fontSize = '0.95rem';
+                    } else {
+                        el.style.fontStyle = 'italic';
+                        el.style.fontSize = '0.95rem';
+                    }
+                });
+            }
+
+            // 渲染软件列表
+            function renderSoftware() {
+                const container = document.getElementById('softwareContainer');
+                container.innerHTML = '';
+                
+                softwareData.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'software-item';
+                    if (index < 2) div.classList.add('visible'); // 默认显示前2个
+                    
+                    const descText = currentLang === 'zh' ? item.description.zh : item.description.en;
+                    const typeText = currentLang === 'zh' ? '(开源 R 软件)' : '(Open-source R package)';
+                    
+                    div.innerHTML = `
+                        <div class="software-name">
+                            <i class="fas fa-box-open"></i> ${item.name}
+                        </div>
+                        <div class="software-meta">${item.authors} (${item.year}). R package version ${item.version}</div>
+                        <div class="software-link">
+                            <a href="${item.link}" target="_blank" class="paper-link">
+                                <i class="fas fa-link"></i> ${item.link}
+                            </a>
+                        </div>
+                        <div class="software-description">${descText}</div>
+                        <div class="contrib-details">${typeText}</div>
+                    `;
+                    
+                    container.appendChild(div);
+                });
+                
+                // 更新统计数字
+                document.getElementById('openSourcePackagesCount').textContent = softwareData.length;
+                
+                // 更新按钮状态
+                updateSoftwareButtonVisibility();
+            }
+
+            // 渲染出版物列表
+            function renderPublications() {
+                const container = document.getElementById('publicationsContainer');
+                container.innerHTML = '';
+                
+                publicationsData.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'paper-item';
+                    if (index < 3) div.classList.add('visible');
+                    
+                    const title = currentLang === 'zh' ? item.title.zh : item.title.en;
+                    const authors = currentLang === 'zh' ? item.authors.zh : item.authors.en;
+                    const journal = currentLang === 'zh' ? item.journal.zh : item.journal.en;
+                    const contrib = currentLang === 'zh' ? item.contrib.zh : item.contrib.en;
+                    
+                    let metaContent = `${item.year}, ${item.volume}(${item.issue}), ${item.pages}.`;
+                    let linkContent = '';
+                    
+                    if (item.doi) {
+                        linkContent = `<a href="https://doi.org/${item.doi}" target="_blank" class="paper-link">
+                            <i class="fas fa-link"></i> https://doi.org/${item.doi}
+                        </a>`;
+                        metaContent += ` <a href="https://doi.org/${item.doi}" target="_blank" class="doi-link">https://doi.org/${item.doi}</a>`;
+                    } else if (item.url) {
+                        linkContent = `<a href="${item.url}" target="_blank" class="paper-link">
+                            <i class="fas fa-link"></i> ${item.url}
+                        </a>`;
+                        metaContent += ` <a href="${item.url}" target="_blank" class="doi-link">${item.url}</a>`;
+                    }
+                    
+                    div.innerHTML = `
+                        <div class="paper-title">${title}</div>
+                        <div class="paper-authors">${authors}</div>
+                        <div class="paper-journal">${journal}</div>
+                        <div class="paper-meta">${metaContent}</div>
+                        <div class="contrib-details">${contrib}</div>
+                    `;
+                    
+                    container.appendChild(div);
+                });
+                
+                // 更新统计数字
+                document.getElementById('journalPapersCount').textContent = publicationsData.length;
+                
+                // 计算中科院一区论文数量
+                const casQ1Papers = publicationsData.filter(pub => 
+                    pub.contrib.zh.includes("中科院一区") || pub.contrib.en.includes("CAS Q1")
+                ).length;
+                
+                document.getElementById('casQ1PapersCount').textContent = casQ1Papers;
+                
+                // 更新按钮状态
+                updateButtonVisibility();
+            }
+
+            // 展示全部出版物
+            document.getElementById('viewAllBtn').addEventListener('click', function() {
+                document.querySelectorAll('.paper-item').forEach(item => {
+                    item.classList.add('visible');
+                });
+                updateButtonVisibility();
             });
 
-            // 下载简历按钮（添加简单反馈）
-            const downloadBtn = document.getElementById('downloadResume');
-            downloadBtn.addEventListener('click', function(e) {
-                // 实际部署时，确保 resume.pdf 存在；此处仅演示事件绑定
-                console.log('简历下载触发 - 请替换为实际PDF文件');
-                // 如需自定义逻辑（如统计下载次数），可在此添加
+            // 收起部分出版物
+            document.getElementById('showLessBtn').addEventListener('click', function() {
+                document.querySelectorAll('.paper-item').forEach((item, index) => {
+                    if (index < 3) {
+                        item.classList.add('visible');
+                    } else {
+                        item.classList.remove('visible');
+                    }
+                });
+                updateButtonVisibility();
             });
+            
+            // 更新按钮可见性
+            function updateButtonVisibility() {
+                const visibleItems = document.querySelectorAll('.paper-item.visible').length;
+                const totalItems = publicationsData.length;
+                
+                if (visibleItems >= totalItems) {
+                    // 显示收起按钮
+                    document.getElementById('viewAllBtn').classList.add('hidden');
+                    document.getElementById('showLessBtn').classList.remove('hidden');
+                } else {
+                    // 显示查看全部按钮
+                    document.getElementById('viewAllBtn').classList.remove('hidden');
+                    document.getElementById('showLessBtn').classList.add('hidden');
+                }
+            }
+            
+            // 展示全部软件
+            document.getElementById('viewAllSoftwareBtn').addEventListener('click', function() {
+                document.querySelectorAll('.software-item').forEach(item => {
+                    item.classList.add('visible');
+                });
+                updateSoftwareButtonVisibility();
+            });
+
+            // 收起部分软件
+            document.getElementById('showLessSoftwareBtn').addEventListener('click', function() {
+                document.querySelectorAll('.software-item').forEach((item, index) => {
+                    if (index < 2) {
+                        item.classList.add('visible');
+                    } else {
+                        item.classList.remove('visible');
+                    }
+                });
+                updateSoftwareButtonVisibility();
+            });
+            
+            // 更新软件按钮可见性
+            function updateSoftwareButtonVisibility() {
+                const visibleItems = document.querySelectorAll('.software-item.visible').length;
+                const totalItems = softwareData.length;
+                
+                if (visibleItems >= totalItems) {
+                    // 显示收起按钮
+                    document.getElementById('viewAllSoftwareBtn').classList.add('hidden');
+                    document.getElementById('showLessSoftwareBtn').classList.remove('hidden');
+                } else {
+                    // 显示查看全部按钮
+                    document.getElementById('viewAllSoftwareBtn').classList.remove('hidden');
+                    document.getElementById('showLessSoftwareBtn').classList.add('hidden');
+                }
+            }
+
+            // 添加平滑滚动效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 软件卡片悬停效果增强
+            const softwareCards = document.querySelectorAll('.software-card, .software-item');
+            softwareCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 项目卡片悬停效果
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(8px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+            
+            // 初始渲染
+            renderSoftware();
+            renderPublications();
         });
     </script>
 </body>
