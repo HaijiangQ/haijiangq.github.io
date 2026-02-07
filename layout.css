@@ -307,12 +307,6 @@ h2 i {
     display: block;
 }
 
-.paper-item:first-child,
-.paper-item:nth-child(2),
-.paper-item:nth-child(3) {
-    display: block;
-}
-
 .paper-title {
     font-weight: 600;
     font-size: 1.1rem;
@@ -573,11 +567,6 @@ footer {
     display: block; /* 可见时显示 */
 }
 
-.software-item:nth-child(1),
-.software-item:nth-child(2) {
-    display: block; /* 默认显示前2个 */
-}
-
 .software-name {
     font-weight: 600;
     color: var(--accent-color);
@@ -638,10 +627,6 @@ footer {
         margin-bottom: 15px;
         align-self: flex-end;
     }
-    .search-container input, .search-container select {
-        width: 100%;
-        margin-bottom: 10px;
-    }
     .button-container {
         flex-direction: column;
         align-items: stretch;
@@ -673,16 +658,39 @@ footer {
     gap: 10px;
 }
 
+/* 搜索容器样式 - 将搜索框和年份选择放在同一行 */
 .search-container {
+    display: flex;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-.search-container input, .search-container select {
-    width: 100%;
+#publicationSearch, #softwareSearch {
+    flex: 3;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+#yearFilter {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    #publicationSearch, #softwareSearch, #yearFilter {
+        width: 100%;
+        flex: none;
+    }
 }
 
 /* 浮动联系按钮 */
@@ -805,12 +813,4 @@ footer {
     height: 100%;
     object-fit: contain;
     display: block;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .image-container {
-        width: 150px;
-        height: 150px;
-    }
 }

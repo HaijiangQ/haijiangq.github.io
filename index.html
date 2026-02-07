@@ -18,7 +18,7 @@
             <i class="fas fa-language"></i> <span data-zh="English" data-en="中文">English</span>
             <span class="lang-indicator"></span>
         </button>
-        <img src="assets/PlaceHolder.jpg" alt="秦海江博士" class="profile-img">
+        <img src="assets/PlaceHolder.jpg" alt="秦海江" class="profile-img">
         <h1 data-zh="秦海江" data-en="Haijiang Qin">秦海江</h1>
         <p class="tagline" data-zh="教育与心理统计 | 数据科学与人工智能" data-en="Educational & Psychological Statistics | Data Science & Artificial Intelligence">教育与心理统计 | 数据科学与人工智能</p>
         <div class="academic-title" data-zh="西南大学 · 心理学部" data-en="Faculty of Psychology, Southwest University">西南大学 · 心理学部</div>
@@ -38,9 +38,9 @@
                         <i class="fas fa-brain"></i>
                         <h3 data-zh="当前研究焦点" data-en="Current Research Focus">当前研究焦点</h3>
                     </div>
-                    <p data-zh="开发自适应心理测量工具，结合深度学习优化认知诊断模型，在保持测量精度的同时提升评估效率。近期在应用神经网络与自注意力机制解决小样本心理测量问题方面取得突破性进展。" 
-                       data-en="Developing adaptive psychological measurement tools, integrating deep learning to optimize cognitive diagnostic models, improving assessment efficiency while maintaining measurement precision. Recent breakthroughs have been achieved in applying neural networks and self-attention mechanisms to address small-sample psychological measurement problems.">
-                        开发自适应心理测量工具，结合深度学习优化认知诊断模型，在保持测量精度的同时提升评估效率。近期在应用神经网络与自注意力机制解决小样本心理测量问题方面取得突破性进展。
+                    <p data-zh="开发自适应心理测量工具，结合深度学习优化统计建模与数据分析，在保持测量精度的同时提升评估效率。近期在应用神经网络与自注意力机制解决小样本、高维复杂的数据方面取得突破性进展。" 
+                       data-en="Developing adaptive psychometric tools that integrate deep learning to optimize statistical modeling and data analysis, enhancing assessment efficiency while maintaining measurement accuracy. Recently achieved breakthrough progress in applying neural networks and self-attention mechanisms to address small-sample, high-dimensional, and complex data problems.">
+                        开发自适应心理测量工具，结合深度学习优化统计建模与数据分析，在保持测量精度的同时提升评估效率。近期在应用神经网络与自注意力机制解决小样本、高维复杂的数据方面取得突破性进展。
                     </p>
                 </div>
             </section>
@@ -48,7 +48,7 @@
             <section class="software-section">
                 <h2><i class="fas fa-code"></i> <span data-zh="软件开发" data-en="Software Development">软件开发</span></h2>
                 <div class="search-container">
-                    <input type="text" id="softwareSearch" placeholder="搜索软件包..." style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ddd;">
+                    <input type="text" id="softwareSearch" placeholder="搜索软件包...">
                 </div>
                 <div class="software-grid" id="softwareContainer">
                     <!-- Software items will be dynamically inserted here -->
@@ -68,8 +68,8 @@
                 <h2><i class="fas fa-book-open"></i> <span data-zh="代表性论文" data-en="Selected Publications">代表性论文</span></h2>
                 
                 <div class="search-container">
-                    <input type="text" id="publicationSearch" placeholder="搜索论文..." style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ddd;">
-                    <select id="yearFilter" style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ddd;">
+                    <input type="text" id="publicationSearch" placeholder="搜索论文...">
+                    <select id="yearFilter">
                         <option value="">全部年份</option>
                         <option value="2026">2026</option>
                         <option value="2025">2025</option>
@@ -95,13 +95,13 @@
         <aside>
             <div class="profile-card">
                 <h3 data-zh="联系方式" data-en="Contact">联系方式</h3>
-                <div class="contact-info">
+                <div class="contact-info" style="text-align: left;">
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div>
-                            <div data-zh="邮箱" data-en="Email">邮箱</div>
+                        <div class="contact-content" style="display: inline-block;">
+                            <span class="contact-label" style="font-weight: 600; margin-right: 4px;" data-zh="邮箱" data-en="Email">邮箱</span>：
                             <a href="mailto:Haijiang133@outlook.com" style="color: var(--primary-color); text-decoration: none;">Haijiang133@outlook.com</a>
                         </div>
                     </div>
@@ -110,9 +110,9 @@
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
-                            <div data-zh="地址" data-en="Address">地址</div>
-                            <span data-zh="中国·重庆 · 西南大学心理学部" data-en="Faculty of Psychology, Southwest University, Chongqing, China">中国·重庆 · 西南大学心理学部</span>
+                        <div class="contact-content" style="display: inline-block;">
+                            <span class="contact-label" style="font-weight: 600; margin-right: 4px;" data-zh="地址" data-en="Address">地址</span>：
+                            <span data-zh="中国·重庆 · 西南大学心理学部" data-en="Faculty of Psychology, Southwest University, Chongqing, China" style="display: inline-block; max-width: 220px; vertical-align: top;">中国·重庆 · 西南大学心理学部</span>
                         </div>
                     </div>
 
@@ -120,8 +120,8 @@
                         <div class="contact-icon">
                             <i class="fab fa-orcid"></i>
                         </div>
-                        <div>
-                            <div data-zh="ORCID" data-en="ORCID">ORCID</div>
+                        <div class="contact-content" style="display: inline-block;">
+                            <span class="contact-label" style="font-weight: 600; margin-right: 4px;" data-zh="ORCID" data-en="ORCID">ORCID</span>：
                             <a href="https://orcid.org/0009-0000-6721-5653" target="_blank" style="color: var(--primary-color); text-decoration: none;">0009-0000-6721-5653</a>
                         </div>
                     </div>
@@ -130,12 +130,11 @@
                         <div class="contact-icon">
                             <i class="fab fa-github"></i>
                         </div>
-                        <div>
-                            <div data-zh="GitHub" data-en="GitHub">GitHub</div>
-                            <a href="https://github.com/HaijiangQ" target="_blank" style="color: var(--primary-color); text-decoration: none;">@ Haijiang Qin</a>
+                        <div class="contact-content" style="display: inline-block;">
+                            <span class="contact-label" style="font-weight: 600; margin-right: 4px;" data-zh="GitHub" data-en="GitHub">GitHub</span>：
+                            <a href="https://github.com/HaijiangQ" target="_blank" style="color: var(--primary-color); text-decoration: none;">@Haijiang Qin</a>
                         </div>
                     </div>
-                    
                 </div>
                 
                 <h3 style="margin: 25px 0 15px 0;" data-zh="研究方向" data-en="Research Focus">研究方向</h3>

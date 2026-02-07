@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             div.innerHTML = `
                 <div class="software-name">
-                    <i class="fas fa-${item.type === 'R package' ? 'r-project' : 'python'}"></i> ${item.name}
+                    <i class="fab fa-${item.type === 'R package' ? 'r-project' : 'python'}"></i> ${item.name}
                 </div>
                 <div class="software-meta">${item.authors} (${item.year}). ${item.type === 'R package' ? 'R package' : 'Python library'} version ${item.version}</div>
                 <div class="software-link">
@@ -129,10 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('publicationsContainer');
         container.innerHTML = '';
         
-        publicationsData.forEach((item, index) => {
+        publicationsData.forEach((item) => {
             const div = document.createElement('div');
             div.className = 'paper-item';
-            if (index < 3) div.classList.add('visible');
             
             const title = currentLang === 'zh' ? item.title.zh : item.title.en;
             const authors = currentLang === 'zh' ? item.authors.zh : item.authors.en;
@@ -165,6 +164,9 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(div);
         });
         
+        // 更新显示
+        updatePublicationDisplay();
+        
         // 更新统计数字
         document.getElementById('journalPapersCount').textContent = publicationsData.length;
         
@@ -182,6 +184,41 @@ document.addEventListener('DOMContentLoaded', function() {
         updateChart();
     }
 
+    // 更新论文显示（考虑过滤条件）
+    function updatePublicationDisplay() {
+        const searchTerm = document.getElementById('publicationSearch').value.toLowerCase();
+        const yearFilter = document.getElementById('yearFilter').value;
+        
+        const paperItems = document.querySelectorAll('.paper-item');
+        let filteredItems = [];
+        
+        // 先确定哪些项目符合过滤条件
+        paperItems.forEach(item => {
+            const yearText = item.querySelector('.paper-meta').textContent;
+            const textContent = item.textContent.toLowerCase();
+            
+            const yearMatch = !yearFilter || yearText.includes(yearFilter);
+            const searchMatch = !searchTerm || textContent.includes(searchTerm);
+            
+            if (yearMatch && searchMatch) {
+                filteredItems.push(item);
+            }
+        });
+        
+        // 默认显示前3个符合过滤条件的项目
+        paperItems.forEach(item => {
+            item.style.display = 'none';
+            item.classList.remove('visible');
+        });
+        
+        filteredItems.slice(0, 3).forEach(item => {
+            item.style.display = 'block';
+            item.classList.add('visible');
+        });
+        
+        updateButtonVisibility();
+    }
+    
     // 更新统计图表
     function updateChart() {
         // 检查Chart.js是否已加载
@@ -311,37 +348,94 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 展示全部出版物
     document.getElementById('viewAllBtn').addEventListener('click', function() {
+        const searchTerm = document.getElementById('publicationSearch').value.toLowerCase();
+        const yearFilter = document.getElementById('yearFilter').value;
+        
         document.querySelectorAll('.paper-item').forEach(item => {
-            item.classList.add('visible');
+            const yearText = item.querySelector('.paper-meta').textContent;
+            const textContent = item.textContent.toLowerCase();
+            
+            const yearMatch = !yearFilter || yearText.includes(yearFilter);
+            const searchMatch = !searchTerm || textContent.includes(searchTerm);
+            
+            if (yearMatch && searchMatch) {
+                item.style.display = 'block';
+                item.classList.add('visible');
+            }
         });
+        
         updateButtonVisibility();
     });
 
     // 收起部分出版物
     document.getElementById('showLessBtn').addEventListener('click', function() {
-        document.querySelectorAll('.paper-item').forEach((item, index) => {
-            if (index < 3) {
-                item.classList.add('visible');
-            } else {
-                item.classList.remove('visible');
+        const searchTerm = document.getElementById('publicationSearch').value.toLowerCase();
+        const yearFilter = document.getElementById('yearFilter').value;
+        
+        const matchingItems = [];
+        
+        // 收集符合过滤条件的项目
+        document.querySelectorAll('.paper-item').forEach(item => {
+            const yearText = item.querySelector('.paper-meta').textContent;
+            const textContent = item.textContent.toLowerCase();
+            
+            const yearMatch = !yearFilter || yearText.includes(yearFilter);
+            const searchMatch = !searchTerm || textContent.includes(searchTerm);
+            
+            if (yearMatch && searchMatch) {
+                matchingItems.push(item);
             }
         });
+        
+        // 只显示前3个
+        document.querySelectorAll('.paper-item').forEach(item => {
+            item.style.display = 'none';
+            item.classList.remove('visible');
+        });
+        
+        matchingItems.slice(0, 3).forEach(item => {
+            item.style.display = 'block';
+            item.classList.add('visible');
+        });
+        
         updateButtonVisibility();
     });
     
     // 更新按钮可见性
     function updateButtonVisibility() {
-        const visibleItems = document.querySelectorAll('.paper-item.visible').length;
-        const totalItems = publicationsData.length;
+        const searchTerm = document.getElementById('publicationSearch').value.toLowerCase();
+        const yearFilter = document.getElementById('yearFilter').value;
         
-        if (visibleItems >= totalItems) {
-            // 显示收起按钮
-            document.getElementById('viewAllBtn').classList.add('hidden');
-            document.getElementById('showLessBtn').classList.remove('hidden');
+        let totalMatchingItems = 0;
+        let currentlyVisibleItems = 0;
+        
+        document.querySelectorAll('.paper-item').forEach(item => {
+            const yearText = item.querySelector('.paper-meta').textContent;
+            const textContent = item.textContent.toLowerCase();
+            
+            const yearMatch = !yearFilter || yearText.includes(yearFilter);
+            const searchMatch = !searchTerm || textContent.includes(searchTerm);
+            
+            if (yearMatch && searchMatch) {
+                totalMatchingItems++;
+                if (item.classList.contains('visible')) {
+                    currentlyVisibleItems++;
+                }
+            }
+        });
+        
+        const viewAllBtn = document.getElementById('viewAllBtn');
+        const showLessBtn = document.getElementById('showLessBtn');
+        
+        if (totalMatchingItems <= 3) {
+            viewAllBtn.classList.add('hidden');
+            showLessBtn.classList.add('hidden');
+        } else if (currentlyVisibleItems >= totalMatchingItems) {
+            viewAllBtn.classList.add('hidden');
+            showLessBtn.classList.remove('hidden');
         } else {
-            // 显示查看全部按钮
-            document.getElementById('viewAllBtn').classList.remove('hidden');
-            document.getElementById('showLessBtn').classList.add('hidden');
+            viewAllBtn.classList.remove('hidden');
+            showLessBtn.classList.add('hidden');
         }
     }
     
@@ -381,33 +475,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 搜索功能
+    // 搜索功能（论文）
     document.getElementById('publicationSearch').addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        document.querySelectorAll('.paper-item').forEach(item => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(searchTerm) ? 'block' : 'none';
-        });
+        updatePublicationDisplay();
     });
 
+    // 年份过滤功能
+    document.getElementById('yearFilter').addEventListener('change', function() {
+        updatePublicationDisplay();
+    });
+
+    // 软件搜索功能
     document.getElementById('softwareSearch').addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         document.querySelectorAll('.software-item').forEach(item => {
             const text = item.textContent.toLowerCase();
             item.style.display = text.includes(searchTerm) ? 'block' : 'none';
-        });
-    });
-
-    // 年份过滤功能
-    document.getElementById('yearFilter').addEventListener('change', function() {
-        const year = this.value;
-        document.querySelectorAll('.paper-item').forEach(item => {
-            const yearText = item.querySelector('.paper-meta').textContent;
-            if (!year || yearText.includes(year)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
         });
     });
 
