@@ -2,6 +2,29 @@
 const publicationsData = [
     {
         title: {
+            zh: "From theory to practice: A comprehensive toolkit for Q-matrix validation in cognitive diagnosis",
+            en: "From theory to practice: A comprehensive toolkit for Q-matrix validation in cognitive diagnosis"
+        },
+        authors: {
+            zh: "Qin, H., Bao, E., & Guo, L.",
+            en: "Qin, H., Bao, E., & Guo, L."
+        },
+        journal: {
+            zh: "Behavior Research Methods",
+            en: "Behavior Research Methods"
+        },
+        year: "2026",
+        volume: "58",
+        issue: "6",
+        pages: "151",
+        doi: "10.3758/s13428-026-02991-5",
+        contrib: {
+            zh: "(中科院一区, SSCI, 该论文提供了一套用于认知诊断中Q矩阵验证的综合工具)",
+            en: "(Mainstream English journal in psychology. This paper provides a comprehensive toolkit for Q-matrix validation in cognitive diagnosis)"
+        }
+    },
+    {
+        title: {
             zh: "基于长短期记忆网络的探索性因素分析因子保留方法",
             en: "Exploratory factor retention method based on long short-term memory networks"
         },
@@ -42,7 +65,7 @@ const publicationsData = [
         pages: "31",
         doi: "10.3758/s13428-024-02547-5",
         contrib: {
-            zh: "(中科院一区，SSCI, 该论文提出属性优先算法大幅降低认知诊断领域修正Q矩阵的搜索复杂度，由O(2^K)降至O(K))",
+            zh: "(中科院一区, SSCI, 该论文提出属性优先算法大幅降低认知诊断领域修正Q矩阵的搜索复杂度，由O(2^K)降至O(K))",
             en: "(CAS Q1, SSCI. This paper proposes the Priority Attribute Algorithm that significantly reduces the search complexity for Q-matrix validation in cognitive diagnosis from O(2^K) to O(K))"
         }
     },
@@ -88,7 +111,7 @@ const publicationsData = [
         pages: "1916-1935",
         doi: "10.3758/s13428-023-02126-0",
         contrib: {
-            zh: "(中科院一区，SSCI，该论文利用随机森林、多层感知器等提高了认知诊断领域Q矩阵修正的准确性)",
+            zh: "(中科院一区, SSCI, 该论文利用随机森林、多层感知器等提高了认知诊断领域Q矩阵修正的准确性)",
             en: "(CAS Q1, SSCI. This paper leverages random forests and multilayer perceptrons to improve the accuracy of Q-matrix validation in cognitive diagnosis)"
         }
     },
@@ -126,7 +149,7 @@ const publicationsData = [
         },
         journal: {
             zh: "心理技术与应用",
-            en: "Psychology：Techniques and Applications"
+            en: "Psychology: Techniques and Applications"
         },
         year: "2024",
         volume: "11",
@@ -134,7 +157,7 @@ const publicationsData = [
         pages: "685-704",
         url: "https://www.cnki.net/",
         contrib: {
-            zh: "(该论文使用R^2和似然对随机森林进行训练，提高了Q矩阵修正的准确率)",
+            zh: "(该论文使用R^2和似然对随机森林进行训练, 提高了Q矩阵修正的准确率)",
             en: "(This paper uses R^2 and likelihood to train random forests, improving the accuracy of Q-matrix validation)"
         }
     }
